@@ -9,7 +9,7 @@ const Feed = () => {
 
   //[] empty apply only reloaded
   useEffect(() => {
-    fetchFromAPI(`search?part=snippet&q=${selectedCategory}`).then((data) =>
+    fetchFromAPI(`search?part=snippet&q=${encodeURIComponent(selectedCategory)}`).then((data) =>
       setVideos(data.items)
     );
   }, [selectedCategory]);
