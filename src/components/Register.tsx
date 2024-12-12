@@ -26,7 +26,7 @@ const Register = () => {
       return;
     }
     try {
-      await register(username, email, password);
+      await register({username, email, password});
       navigate('/');
     } catch (err: any) {
       setError(err.response?.data?.message || 'Failed to register');

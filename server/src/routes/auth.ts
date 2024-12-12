@@ -53,6 +53,7 @@ router.post('/register', async (req, res) => {
       }
     });
   } catch (error) {
+    console.error('Error creating user:', error);
     res.status(500).json({ message: 'Error creating user' });
   }
 });
@@ -60,6 +61,9 @@ router.post('/register', async (req, res) => {
 // Login
 router.post('/login', async (req, res) => {
   try {
+    console.log('Login request body:', JSON.stringify(req.body, null, 2));
+    console.log('Login request headers:', JSON.stringify(req.headers, null, 2));
+    
     const { email, password } = req.body;
 
     // Find user
@@ -94,6 +98,7 @@ router.post('/login', async (req, res) => {
       }
     });
   } catch (error) {
+    console.error('Error logging in:', error);
     res.status(500).json({ message: 'Error logging in' });
   }
 });

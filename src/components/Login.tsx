@@ -20,7 +20,12 @@ const Login = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await login(email, password);
+      // export interface LoginData {
+      //   email: string;
+      //   password: string;
+      // }
+      
+      await login({"email" : email, "password" : password});
       navigate('/');
     } catch (err: any) {
       setError(err.response?.data?.message || 'Failed to login');

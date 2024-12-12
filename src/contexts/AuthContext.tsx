@@ -1,18 +1,12 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import axios from 'axios';
-
-interface User {
-  id: string;
-  username: string;
-  email: string;
-  profileImage?: string;
-}
+import AuthService, { User, LoginData, RegisterData } from '../services/auth';
+import UserService from '../services/user';
 
 interface AuthContextType {
   user: User | null;
   loading: boolean;
-  login: (email: string, password: string) => Promise<void>;
-  register: (username: string, email: string, password: string) => Promise<void>;
+  login: (data: LoginData) => Promise<void>;
+  register: (data: RegisterData) => Promise<void>;
   logout: () => void;
 }
 
@@ -23,51 +17,33 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      // Verify token and get user data
-      axios.get('http://localhost:6000/api/users/profile', {
-        headers: { Authorization: `Bearer ${token}` }
-      })
-        .then(response => {
-          setUser(response.data);
-        })
-        .catch(() => {
-          localStorage.removeItem('token');
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    } else {
+    const initializeAuth = async () => {
+      if (AuthService.isAuthenticated()) {
+        try {
+          const profile = await UserService.getProfile();
+          setUser(profile);
+        } catch (error) {
+          AuthService.logout();
+        }
+      }
       setLoading(false);
-    }
+    };
+
+    initializeAuth();
   }, []);
 
-  const login = async (email: string, password: string) => {
-    const response = await axios.post('http://localhost:6000/api/auth/login', {
-      email,
-      password
-    });
-    
-    const { token, user } = response.data;
-    localStorage.setItem('token', token);
-    setUser(user);
+  const login = async (data: LoginData) => {
+    const response = await AuthService.login(data);
+    setUser(response.user);
   };
 
-  const register = async (username: string, email: string, password: string) => {
-    const response = await axios.post('http://localhost:6000/api/auth/register', {
-      username,
-      email,
-      password
-    });
-    
-    const { token, user } = response.data;
-    localStorage.setItem('token', token);
-    setUser(user);
+  const register = async (data: RegisterData) => {
+    const response = await AuthService.register(data);
+    setUser(response.user);
   };
 
   const logout = () => {
-    localStorage.removeItem('token');
+    AuthService.logout();
     setUser(null);
   };
 
@@ -85,3 +61,5 @@ export const useAuth = () => {
   }
   return context;
 };
+
+export default AuthContext;
