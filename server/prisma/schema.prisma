@@ -28,6 +28,7 @@ model UserActivity {
   user        User     @relation(fields: [userId], references: [id])
 }
 
+
 model Video {
   id          String    @id @default(uuid())
   title       String
