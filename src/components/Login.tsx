@@ -45,7 +45,7 @@ const Login = () => {
         }}
       >
         <Typography component="h1" variant="h5">
-          Sign in
+          로 그 인
         </Typography>
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
           {error && (
@@ -58,7 +58,7 @@ const Login = () => {
             required
             fullWidth
             id="email"
-            label="Email Address"
+            label="이메일"
             name="email"
             autoComplete="email"
             autoFocus
@@ -70,7 +70,7 @@ const Login = () => {
             required
             fullWidth
             name="password"
-            label="Password"
+            label="패스워드"
             type="password"
             id="password"
             autoComplete="current-password"
@@ -83,12 +83,12 @@ const Login = () => {
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            Sign In
+            제출
           </Button>
           <Box sx={{ textAlign: 'center' }}>
             <Link to="/register" style={{ textDecoration: 'none' }}>
               <Typography color="primary">
-                Don't have an account? Sign Up
+                계정이 없으신가요?  등록하세요!
               </Typography>
             </Link>
           </Box>

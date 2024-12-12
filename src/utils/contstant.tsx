@@ -15,23 +15,21 @@ import DeveloperModeIcon from "@mui/icons-material/DeveloperMode";
 export const logo = "https://i.ibb.co/s9Qys2j/logo.png";
 
 export const categories = [
-  { name: "홈", icon: <HomeIcon /> },
+  { name: "뉴스", icon: <HomeIcon /> },
   { name: "리엑트", icon: <CodeIcon /> },
-  { name: "Coding", icon: <CodeIcon /> },
-  { name: "ReactJS", icon: <CodeIcon /> },
-  { name: "NextJS", icon: <CodeIcon /> },
-  { name: "Music", icon: <MusicNoteIcon /> },
-  { name: "Education", icon: <SchoolIcon /> },
-  { name: "Podcast", icon: <GraphicEqIcon /> },
-  { name: "Movie", icon: <OndemandVideoIcon /> },
-  { name: "Gaming", icon: <SportsEsportsIcon /> },
-  { name: "Live", icon: <LiveTvIcon /> },
-  { name: "Sport", icon: <FitnessCenterIcon /> },
-  { name: "Fashion", icon: <CheckroomIcon /> },
-  { name: "Beauty", icon: <FaceRetouchingNaturalIcon /> },
-  { name: "Comedy", icon: <TheaterComedyIcon /> },
-  { name: "Gym", icon: <FitnessCenterIcon /> },
-  { name: "Crypto", icon: <DeveloperModeIcon /> },
+  { name: "우주", icon: <CodeIcon /> },
+  { name: "셀프 집짓기", icon: <TheaterComedyIcon /> },
+  { name: "문학", icon: <GraphicEqIcon />}, 
+  { name: "한강", icon: <CodeIcon /> },
+  { name: "음악", icon: <MusicNoteIcon /> },
+  { name: "교육", icon: <SchoolIcon /> },
+  { name: "독서", icon: <OndemandVideoIcon /> },
+  { name: "게임", icon: <SportsEsportsIcon /> },
+  { name: "라이브", icon: <LiveTvIcon /> },
+  { name: "미스테리", icon: <FitnessCenterIcon /> },
+  { name: "패션", icon: <CheckroomIcon /> },
+  { name: "초고대문명", icon: <FaceRetouchingNaturalIcon /> },  
+  { name: "암호화", icon: <DeveloperModeIcon /> },
 ];
 
 export const demoThumbnailUrl = "https://i.ibb.co/G2L2Gwp/API-Course.png";
